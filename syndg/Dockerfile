@@ -19,3 +19,5 @@ RUN pip install pip==24.0 && python -m pip install --upgrade setuptools && \
     matplotlib \
     seaborn \
     git+https://github.com/openai/CLIP.git
+
+RUN /opt/conda/bin/conda init bash
