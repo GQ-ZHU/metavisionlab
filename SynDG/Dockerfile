@@ -1,8 +1,21 @@
-# 使用 PyTorch 官方镜像，包含 Python 和 CUDA 12.4
+#tag:latest
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
-# 安装 git，并避免交互式选择时区
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y git && apt-get clean
+# 更新系统库，安装常用工具
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
+    apt-get --fix-broken install -y
 
-# 设置工作目录
-WORKDIR /app
+RUN pip install pip==24.0 && python -m pip install --upgrade setuptools && \
+    pip install \
+    diffusers \
+    accelerate \
+    sentencepiece \
+    protobuf \
+    openai \
+    scikit-learn \
+    Pillow \
+    numpy \
+    matplotlib \
+    seaborn \
+    git+https://github.com/openai/CLIP.git
