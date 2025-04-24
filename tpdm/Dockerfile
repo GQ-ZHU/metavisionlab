@@ -37,8 +37,6 @@ RUN pip install --no-cache-dir \
     fairscale \
     clint \
     huggingface_hub \
-    scikit-learn \
-    openai \
     git+https://github.com/openai/CLIP.git
 
 RUN /opt/conda/bin/conda init bash
