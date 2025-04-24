@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install pip==24.0 && python -m pip install --upgrade setuptools && \
     pip install \
+    transformers \
     diffusers \
     accelerate \
     sentencepiece \
