@@ -14,7 +14,6 @@ RUN pip install --no-cache-dir \
     "transformers>=4.46.0" \
     "diffusers>=0.31.0" \
     wandb \
-    deepspeed \
     accelerate \
     sentencepiece \
     cloudpickle \
