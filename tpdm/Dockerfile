@@ -6,6 +6,11 @@ RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
     apt-get --fix-broken install -y
 
+RUN apt install build-essential
+
+RUN conda install -c nvidia cuda-compiler
+RUN conda install mpi4py
+
 # 安装 Python 依赖
 RUN pip install --no-cache-dir \
     trl==0.11.3 \
@@ -14,6 +19,7 @@ RUN pip install --no-cache-dir \
     "transformers>=4.46.0" \
     "diffusers>=0.31.0" \
     wandb \
+    deepspeed \
     accelerate \
     sentencepiece \
     cloudpickle \
