@@ -1,5 +1,5 @@
 #tag:latest
-FROM pytorch/pytorch:2.7.0-cuda12.8-cudnn9-devel
+FROM pytorch/pytorch:2.7.0-cuda11.8-cudnn9-devel
 
 # 更新系统库，安装常用工具
 RUN apt-get update && apt-get install -y \
