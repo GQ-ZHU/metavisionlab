@@ -18,3 +18,5 @@ COPY requirements.txt .
 
 # 安装 Python 依赖
 RUN pip install --no-cache-dir -r requirements.txt
+
+RUN /opt/conda/bin/conda init bash
