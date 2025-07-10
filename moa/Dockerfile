@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
     apt-get --fix-broken install -y
 
-# # MoA 项目
+# MoA 项目
 # 设置工作目录
 WORKDIR /app
 # 克隆 MoA 仓库
