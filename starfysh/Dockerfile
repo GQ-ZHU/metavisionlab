@@ -2,27 +2,13 @@
 # 基础镜像
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
-# 更新系统并安装依赖
+# 更新系统库，安装常用工具
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
-    libpci-dev \
-    curl \
-    nano \
-    psmisc \
-    zip \
-    git \
-    wget \
-    gdal-bin \
-    libgdal-dev \
-    python3-gdal \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
+    apt-get --fix-broken install -y
 
-# 升级 pip & setuptools
-RUN pip install --upgrade pip setuptools wheel
-
-# 安装 Python 依赖
-RUN pip install \
+RUN pip install pip==24.0 && python -m pip install --upgrade setuptools && \
+    pip install \
     transformers \
     accelerate \
     openai \
@@ -31,14 +17,10 @@ RUN pip install \
     numpy \
     matplotlib \
     seaborn \
-    openpyxl
+    openpyxl \
+    starfysh \
+    git+https://github.com/openai/CLIP.git
 
-# 克隆并安装 starfysh
-WORKDIR /app
-RUN git clone https://github.com/azizilab/starfysh.git
-WORKDIR /app/starfysh
-RUN pip install .
 
 # 进入 bash 环境时初始化 conda
 RUN /opt/conda/bin/conda init bash
-
