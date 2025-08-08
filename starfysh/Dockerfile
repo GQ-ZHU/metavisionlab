@@ -1,11 +1,14 @@
 #tag:latest
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
-# 更新系统库，安装常用工具
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx libpci-dev curl nano psmisc zip git \
-    gdal-bin libgdal-dev \
-    && apt-get --fix-broken install -y
+# Step 0: 更新系统库并安装常用工具 + 添加 UbuntuGIS PPA 获取新版 GDAL
+RUN apt-get update && apt-get install -y software-properties-common && \
+    add-apt-repository ppa:ubuntugis/ppa && \
+    apt-get update && apt-get install -y \
+        libgl1-mesa-glx libpci-dev curl nano psmisc zip git \
+        gdal-bin libgdal-dev \
+    && apt-get --fix-broken install -y && \
+    apt-get clean
 
 # 设置工作目录
 WORKDIR /app
