@@ -5,6 +5,8 @@ FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 RUN apt-get update && apt-get install -y \
     gdal-bin \
     libgdal-dev \
+    zip git && \
+    apt-get --fix-broken install -y
     && rm -rf /var/lib/apt/lists/*
 
 # 升级 pip & setuptools
