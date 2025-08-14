@@ -21,5 +21,5 @@ RUN conda install -c conda-forge gdal=3.11.3
 # 克隆并安装 Starfysh
 RUN git clone https://github.com/azizilab/starfysh.git /app/starfysh
 WORKDIR /app/starfysh
-RUN pip install .
+RUN pip install . -i https://pypi.tuna.tsinghua.edu.cn/simple
 
