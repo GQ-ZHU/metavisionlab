@@ -1,9 +1,5 @@
 #tag:latest
-# 基础镜像：PyTorch GPU 版 + CUDA 12.4
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
-
-# 设置 Python 版本为 3.8
-RUN conda install -y python=3.8 && conda clean -ya
 
 # 安装常用系统依赖（opencv、scanpy、histomicstk 等需要）
 RUN apt-get update && apt-get install -y \
