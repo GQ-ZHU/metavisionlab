@@ -22,5 +22,4 @@ RUN conda install -c conda-forge gdal=3.11.3
 RUN git clone https://github.com/azizilab/starfysh.git /app/starfysh
 WORKDIR /app/starfysh
 RUN pip install -r requirements.txt
-RUN pip install .
-
+# RUN pip install .
