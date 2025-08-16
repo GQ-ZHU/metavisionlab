@@ -7,7 +7,13 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     gfortran \
     git \
+    curl \
+    openjdk-11-jdk \
     && rm -rf /var/lib/apt/lists/*
+
+# 设置 JAVA_HOME 环境变量
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
 
 # 用 conda 安装 MKL
 RUN conda install -y mkl mkl-service
@@ -24,7 +30,7 @@ RUN pip install \
     setuptools==58.0.0 \
     wheel==0.36.2
 
-# 使用 Conda 安装 GDAL 3.11.3
+# 使用 Conda 安装 GDAL
 RUN conda install -c conda-forge gdal=3.11.3
 
 # Step 1: Clone the Repository
