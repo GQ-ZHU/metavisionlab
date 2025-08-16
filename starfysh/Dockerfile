@@ -18,8 +18,9 @@ ENV PATH=$JAVA_HOME/bin:$PATH
 # 升级 pip & setuptools
 RUN pip install --upgrade pip setuptools wheel
 
-# 使用 Conda 安装 GDAL
-RUN conda install -c conda-forge gdal=3.11.3
+RUN conda update -n base -c defaults conda -y
+RUN conda install -c conda-forge gdal=3.11.3 -y
+
 
 # 克隆并安装 Starfysh
 RUN git clone https://github.com/azizilab/starfysh.git /app/starfysh
