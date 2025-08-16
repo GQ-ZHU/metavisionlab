@@ -1,6 +1,6 @@
 #tag:latest
 # Base image
-FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
 
 # 安装系统工具 + OpenJDK
 RUN apt-get update && apt-get install -y \
