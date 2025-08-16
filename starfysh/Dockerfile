@@ -6,6 +6,7 @@ FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 RUN apt-get update && apt-get install -y \
     build-essential \
     gfortran \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # 用 conda 安装 MKL
