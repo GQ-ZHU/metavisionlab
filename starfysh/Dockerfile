@@ -23,6 +23,16 @@ RUN pip install \
     setuptools==58.0.0 \
     wheel==0.36.2
 
+# Step 1: Clone the Repository
+WORKDIR /app
+RUN git clone https://github.com/azizilab/starfysh.git
+
+# Step 2: Navigate to the Repository
+WORKDIR /app/starfysh
+
+# Step 3: Install the Package
+RUN pip install .
+
 # 设置工作目录
 WORKDIR /workspace
 
