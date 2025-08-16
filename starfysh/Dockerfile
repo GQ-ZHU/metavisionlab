@@ -31,7 +31,9 @@ RUN pip install \
     wheel==0.36.2
 
 # 使用 Conda 安装 GDAL
-RUN conda install -c conda-forge gdal=3.11.3
+RUN conda install mamba -n base -c conda-forge
+RUN mamba install -c conda-forge gdal=3.11.3
+
 
 # Step 1: Clone the Repository
 WORKDIR /app
