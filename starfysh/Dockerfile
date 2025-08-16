@@ -1,39 +1,29 @@
 #tag:latest
-FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+# 基础镜像
+FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
 
-
-# ENV DEBIAN_FRONTEND=noninteractive
-
-# # 安装系统工具 + OpenJDK
-# RUN apt-get update && apt-get install -y \
-#     tzdata \
-#     zip git curl \
-#     openjdk-11-jdk \
-#     && rm -rf /var/lib/apt/lists/*
-
-# ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-# ENV PATH=$JAVA_HOME/bin:$PATH
-
-# # 升级 pip & setuptools
-# RUN pip install --upgrade pip setuptools wheel
-
-# RUN conda update -n base -c defaults conda -y
-# RUN conda install -c conda-forge gdal=3.11.3 -y
-
-
-# # 克隆并安装 Starfysh
-# RUN git clone https://github.com/azizilab/starfysh.git /app/starfysh
-# WORKDIR /app/starfysh
-# RUN pip install -r requirements.txt
-# RUN /opt/conda/bin/conda init bash
-
-
-# 更新系统库，安装常用工具
+# 安装系统依赖
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
-    apt-get --fix-broken install -y
+    build-essential \
+    gfortran \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install pip==24.0 && python -m pip install --upgrade setuptools && \
-    pip install Starfysh
+# 用 conda 安装 MKL
+RUN conda install -y mkl mkl-service
+
+# 升级 pip
+RUN pip install --upgrade pip
+
+# 安装指定 Python 库
+RUN pip install \
+    numpy==1.22.1 \
+    pandas \
+    pymc3 \
+    scanpy \
+    setuptools==58.0.0 \
+    wheel==0.36.2
+
+# 设置工作目录
+WORKDIR /workspace
 
 RUN /opt/conda/bin/conda init bash
