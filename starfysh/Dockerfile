@@ -24,6 +24,9 @@ RUN pip install \
     setuptools==58.0.0 \
     wheel==0.36.2
 
+# 使用 Conda 安装 GDAL 3.11.3
+RUN conda install -c conda-forge gdal=3.11.3
+
 # Step 1: Clone the Repository
 WORKDIR /app
 RUN git clone https://github.com/azizilab/starfysh.git
