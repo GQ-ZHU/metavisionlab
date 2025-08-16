@@ -32,7 +32,7 @@ RUN git clone https://github.com/azizilab/starfysh.git
 WORKDIR /app/starfysh
 
 # Step 3: Install the Package
-RUN pip install .
+RUN pip install -r requirements.txt
 
 # 设置工作目录
 WORKDIR /workspace
