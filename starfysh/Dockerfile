@@ -35,17 +35,17 @@ RUN conda install mamba -n base -c conda-forge
 RUN mamba install -c conda-forge gdal=3.11.3
 
 
-# Step 1: Clone the Repository
-WORKDIR /app
-RUN git clone https://github.com/azizilab/starfysh.git
+# # Step 1: Clone the Repository
+# WORKDIR /app
+# RUN git clone https://github.com/azizilab/starfysh.git
 
-# Step 2: Navigate to the Repository
-WORKDIR /app/starfysh
+# # Step 2: Navigate to the Repository
+# WORKDIR /app/starfysh
 
-# Step 3: Install the Package
-RUN pip install -r requirements.txt
+# # Step 3: Install the Package
+# RUN pip install -r requirements.txt
 
-# 设置工作目录
-WORKDIR /workspace
+# # 设置工作目录
+# WORKDIR /workspace
 
 RUN /opt/conda/bin/conda init bash
