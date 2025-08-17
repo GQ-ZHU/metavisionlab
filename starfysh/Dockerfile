@@ -1,6 +1,6 @@
 #tag:latest
 # 基础镜像
-FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
+FROM pytorch/pytorch:1.13.0-cuda11.6-cudnn8-runtime
 
 # 安装系统依赖
 RUN apt-get update && apt-get install -y \
@@ -31,8 +31,10 @@ RUN pip install \
     wheel==0.36.2
 
 # 使用 Conda 安装 GDAL
-RUN conda install mamba -n base -c conda-forge
-RUN mamba install -c conda-forge gdal=3.11.3
+RUN conda install -c -y conda-forge gdal=3.6
+
+# 安装Starfysh
+RUN pip install Starfysh
 
 
 # # Step 1: Clone the Repository
