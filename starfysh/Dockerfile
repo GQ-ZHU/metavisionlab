@@ -31,7 +31,7 @@ RUN pip install \
     wheel==0.36.2
 
 # 使用 Conda 安装 GDAL
-RUN conda install -c -y conda-forge gdal=3.6
+RUN conda install -c conda-forge gdal=3.11.3
 
 # 安装Starfysh
 RUN pip install Starfysh
