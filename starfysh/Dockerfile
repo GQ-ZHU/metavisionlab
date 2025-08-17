@@ -30,8 +30,10 @@ RUN pip install \
     setuptools==58.0.0 \
     wheel==0.36.2
 
+RUN pip install histomicstk --find-links https://girder.github.io/large_image_wheels -i https://pypi.tuna.tsinghua.edu.cn/simple
+
 # 使用 Conda 安装 GDAL
-RUN conda install -c conda-forge gdal=3.11.3
+# RUN conda install -c conda-forge gdal=3.11.3
 
 # 安装Starfysh
 RUN pip install Starfysh
