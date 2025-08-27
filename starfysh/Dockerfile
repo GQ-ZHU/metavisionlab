@@ -1,3 +1,4 @@
+#tag:latest
 FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 
 # Step 1: 更新系统库并安装工具
@@ -24,6 +25,15 @@ RUN pip install "histomicstk>=1.2.0" \
 
 # 安装 PyTorch 2.5.0 (CUDA 12.1 版本)
 RUN conda install -y pytorch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 pytorch-cuda=12.1 -c pytorch -c nvidia
+
+# 安装Starfysh以来
+# Step 1: Clone the Repository
+WORKDIR /app
+RUN git clone https://github.com/azizilab/starfysh.git
+# Step 2: Navigate to the Repository
+WORKDIR /app/starfysh
+# Step 3: Install the Package
+RUN pip install -r requirements.txt
 
 # 设置默认进入 conda 环境
 ENTRYPOINT [ "conda", "run", "--no-capture-output", "-n", "starfysh", "bash" ]
