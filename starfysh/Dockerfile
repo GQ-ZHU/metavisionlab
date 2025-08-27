@@ -37,3 +37,9 @@ RUN pip install -r requirements.txt
 
 # 设置默认进入 conda 环境
 ENTRYPOINT [ "conda", "run", "--no-capture-output", "-n", "starfysh", "bash" ]
+
+# 初始化 conda
+RUN /opt/conda/bin/conda init bash
+
+# 设置默认激活的环境
+RUN echo "conda activate starfysh" >> ~/.bashrc
