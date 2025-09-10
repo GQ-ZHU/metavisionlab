@@ -18,6 +18,9 @@ SHELL ["conda", "run", "-n", "starfysh", "/bin/bash", "-c"]
 RUN conda install -y mkl mkl-service && \
     conda install -c conda-forge -y gdal=3.11.3
 
+# 安装 tensorboard
+RUN pip install tensorboard
+
 # 安装 Histomicstk
 RUN pip install "histomicstk>=1.2.0" \
     --find-links https://girder.github.io/large_image_wheels \
