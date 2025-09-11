@@ -18,9 +18,6 @@ SHELL ["conda", "run", "-n", "starfysh", "/bin/bash", "-c"]
 RUN conda install -y mkl mkl-service && \
     conda install -c conda-forge -y gdal=3.11.3
 
-# 安装 tensorboard
-RUN pip install tensorboard
-
 # 安装 Histomicstk
 RUN pip install "histomicstk>=1.2.0" \
     --find-links https://girder.github.io/large_image_wheels \
@@ -37,6 +34,9 @@ RUN git clone https://github.com/azizilab/starfysh.git
 WORKDIR /app/starfysh
 # Step 3: Install the Package
 RUN pip install -r requirements.txt
+
+# 安装 其他工具库
+RUN pip install tensorboard scanpy squidpy scikit-learn matplotlib seaborn pandas numpy scipy statsmodels tangram-sc
 
 # 设置默认进入 conda 环境
 ENTRYPOINT [ "conda", "run", "--no-capture-output", "-n", "starfysh", "bash" ]
