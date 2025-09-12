@@ -8,6 +8,12 @@ RUN apt-get update && apt-get install -y \
     apt-get --fix-broken install -y && \
     rm -rf /var/lib/apt/lists/*
 
+RUN conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ && \
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/rapidsai/ && \
+    conda config --set show_channel_urls yes
+    
 # 安装 mkl & gdal
 RUN conda install -y mkl mkl-service && \
     conda install -c conda-forge -y gdal=3.11.3
@@ -29,7 +35,7 @@ RUN pip install -r requirements.txt
 # 安装 其他工具库
 RUN pip install tensorboard scanpy squidpy scikit-learn matplotlib seaborn pandas numpy scipy statsmodels tangram-sc
 
-mamba install -c rapidsai -c conda-forge -c nvidia rapids=25.08 python=3.11 'cuda-version>=12.0,<=12.9'
+conda install -c rapidsai -c conda-forge -c nvidia rapids=25.08 python=3.11 'cuda-version>=12.0,<=12.9'
 
 # 初始化 conda
 RUN /opt/conda/bin/conda init bash
