@@ -29,5 +29,7 @@ RUN pip install -r requirements.txt
 # 安装 其他工具库
 RUN pip install tensorboard scanpy squidpy scikit-learn matplotlib seaborn pandas numpy scipy statsmodels tangram-sc
 
+mamba install -c rapidsai -c conda-forge -c nvidia rapids=25.08 python=3.11 'cuda-version>=12.0,<=12.9'
+
 # 初始化 conda
 RUN /opt/conda/bin/conda init bash
