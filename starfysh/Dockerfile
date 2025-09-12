@@ -1,5 +1,5 @@
 #tag:latest
-FROM pytorch/pytorch:2.5.0-cuda12.1-cudnn9-runtime
+FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
 RUN python --version
 RUN python3 --version
 
