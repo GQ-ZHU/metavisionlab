@@ -33,7 +33,7 @@ WORKDIR /app/starfysh
 RUN pip install -r requirements.txt
 
 # 安装 其他工具库
-RUN pip install tensorboard scanpy squidpy scikit-learn matplotlib seaborn pandas numpy==1.26.4 scipy statsmodels tangram-sc scikit-misc
+RUN pip install tensorboard scanpy squidpy scikit-learn matplotlib seaborn pandas scipy statsmodels tangram-sc scikit-misc
 
 # RUN conda install -c rapidsai -c conda-forge -c nvidia rapids=25.08 python=3.11 'cuda-version>=12.0,<=12.9'
 
