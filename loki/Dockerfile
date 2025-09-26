@@ -13,3 +13,5 @@ RUN git clone https://github.com/GuangyuWangLab2021/Loki.git
 WORKDIR /app/Loki/src
 # 安装 Python 依赖
 RUN pip install .
+
+RUN /opt/conda/bin/conda init bash
