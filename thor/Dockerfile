@@ -1,0 +1,17 @@
+#tag:latest
+FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
+    apt-get --fix-broken install -y
+    
+# Thor 项目
+# 设置工作目录
+WORKDIR /app
+# 克隆 Thor 仓库
+RUN git clone https://github.com/GuangyuWangLab2021/Thor.git
+WORKDIR /app/Thor
+# 安装 Python 依赖
+RUN pip install ".[vis,analysis]"
+
+RUN /opt/conda/bin/conda init bash
