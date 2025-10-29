@@ -34,6 +34,13 @@ RUN pip install ".[vis,analysis]"
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate thor_env" >> ~/.bashrc
 
+# ---- 输出当前虚拟环境和 Python 版本（用于验证） ----
+RUN echo "=== Environment check ===" && \
+    conda info --envs && \
+    echo "Current Python:" && \
+    python --version && \
+    echo "========================="
+
 # ---- 设置默认启动命令 ----
 CMD ["/bin/bash", "--login"]
 
