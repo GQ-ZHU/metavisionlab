@@ -30,11 +30,12 @@ WORKDIR /app/Thor
 RUN pip install --upgrade pip
 RUN pip install ".[vis,analysis]"
 
-# （可选）设置容器启动时自动进入虚拟环境
-RUN echo "conda activate thor_env" >> ~/.bashrc
+# 加入 conda 初始化与自动激活命令
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate thor_env" >> ~/.bashrc
 
-# 入口命令
-CMD ["/bin/bash"]
+# ---- 设置默认启动命令 ----
+CMD ["/bin/bash", "--login"]
 
 # RUN apt-get update && apt-get install -y \
 #     libgl1-mesa-glx libpci-dev curl nano psmisc zip git && \
