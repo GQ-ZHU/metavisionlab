@@ -23,7 +23,7 @@ RUN conda install pytorch=1.6.0 torchvision -c pytorch
 
 # 加入 conda 初始化与自动激活命令
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate thor_env" >> ~/.bashrc
+    echo "conda activate spec2mol" >> ~/.bashrc
 
 # ---- 输出当前虚拟环境和 Python 版本（用于验证） ----
 RUN echo "=== Environment check ===" && \
