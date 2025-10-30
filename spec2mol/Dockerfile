@@ -20,6 +20,7 @@ RUN conda create -y -n spec2mol python=3.7
 SHELL ["conda", "run", "-n", "spec2mol", "/bin/bash", "-c"]
 RUN conda install rdkit -c rdkit
 RUN conda install pytorch=1.6.0 torchvision -c pytorch
+RUN conda install mkl=2024.0
 
 # 加入 conda 初始化与自动激活命令
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
