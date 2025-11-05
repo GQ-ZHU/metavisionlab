@@ -18,7 +18,7 @@ RUN conda create -y -c conda-forge -n diffms rdkit=2024.09.4 python=3.9
 # 设置默认环境为 diffms
 # conda run 可在非交互 shell 执行命令
 SHELL ["conda", "run", "-n", "diffms", "/bin/bash", "-c"]
-RUN conda install pytorch=1.6.0 torchvision -c pytorch
+RUN conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.1 -c pytorch -c nvidia
 
 RUN git clone https://github.com/coleygroup/DiffMS.git
 WORKDIR /app/DiffMS
