@@ -14,7 +14,7 @@ WORKDIR /app
 # 创建 Python 3.9 的虚拟环境
 # -------------------------------
 # RUN conda create -y -c conda-forge -n diffms rdkit=2024.09.4 python=3.9
-RUN conda -y rdkit=2024.09.4
+RUN conda install -y rdkit=2024.09.4
 
 # 设置默认环境为 diffms
 # conda run 可在非交互 shell 执行命令
