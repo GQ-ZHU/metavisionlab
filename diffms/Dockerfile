@@ -23,6 +23,7 @@ RUN conda install -y rdkit=2024.09.4
 
 RUN git clone https://github.com/coleygroup/DiffMS.git
 WORKDIR /app/DiffMS
+RUN pip install --upgrade pip setuptools wheel
 RUN pip install -e .
 
 # 加入 conda 初始化与自动激活命令
