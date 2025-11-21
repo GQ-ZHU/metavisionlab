@@ -21,7 +21,7 @@ SHELL ["conda", "run", "-n", "CSU-MS2", "/bin/bash", "-c"]
 
 RUN git clone https://github.com/tingxiecsu/CSU-MS2.git
 WORKDIR /app/CSU-MS2
-RUN python -m pip install -r requirements.txt
+RUN conda install --file requirements.txt
 
 # 加入 conda 初始化与自动激活命令
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
