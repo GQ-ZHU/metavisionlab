@@ -9,19 +9,17 @@ RUN apt-get update && apt-get install -y \
 
 # 创建工作目录
 WORKDIR /app
+RUN git clone https://github.com/tingxiecsu/CSU-MS2.git
+WORKDIR /app/CSU-MS2
 
 # -------------------------------
 # 创建 Python 3.8 的虚拟环境
 # -------------------------------
-RUN conda create --name CSU-MS2 python=3.8.18
+RUN conda create --name CSU-MS2 python=3.8.18 --file requirements.txt
 
 # 设置默认环境为 CSU-MS2
 # conda run 可在非交互 shell 执行命令
 SHELL ["conda", "run", "-n", "CSU-MS2", "/bin/bash", "-c"]
-
-RUN git clone https://github.com/tingxiecsu/CSU-MS2.git
-WORKDIR /app/CSU-MS2
-RUN conda install --file requirements.txt
 
 # 加入 conda 初始化与自动激活命令
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
